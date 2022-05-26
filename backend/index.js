@@ -1,7 +1,6 @@
 // Import from packages
 const express = require('express');
 const mongoose = require('mongoose');
-const adminRoute = require('./routes/admin');
 
 // Constants init
 const PORT = 3000
@@ -10,6 +9,9 @@ const DB = "mongodb+srv://huzaifa:huzaifa1997@cluster0.nf0ic9r.mongodb.net/?retr
 
 // Import from file
 const authRouter = require('./routes/auth');
+const productRoute = require('./routes/product');
+const adminRoute = require('./routes/admin');
+
 
 // Connections
 mongoose.connect(DB).then(() => {
@@ -23,6 +25,7 @@ mongoose.connect(DB).then(() => {
 app.use(express.json());
 app.use(authRouter);
 app.use(adminRoute);
+app.use(productRoute);
 
 app.listen( PORT || 3000, () => {
     console.log(`Server is runnning at port ${PORT}`)
