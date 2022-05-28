@@ -5,6 +5,7 @@ import 'package:mobileapp/common/widgets/bottom_bar.dart';
 import 'package:mobileapp/constants/error_handling.dart';
 import 'package:mobileapp/constants/global_variables.dart';
 import 'package:mobileapp/constants/utils.dart';
+import 'package:mobileapp/features/admin/screens/admin_screen.dart';
 import 'package:mobileapp/features/home/screens/home_screen.dart';
 import 'package:mobileapp/models/user.dart';
 import 'package:http/http.dart' as http;
@@ -73,11 +74,18 @@ class AuthService {
           context: context,
           onSuccess: () async {
             SharedPreferences prefs = await SharedPreferences.getInstance();
-            Provider.of<UserProvider>(context, listen: false).setUser(res.body);
+            var userProvider =
+                Provider.of<UserProvider>(context, listen: false);
+            userProvider.setUser(res.body);
             await prefs.setString(
                 'x-auth-token', jsonDecode(res.body)["token"]);
-            Navigator.pushNamedAndRemoveUntil(
-                context, BottomBar.routeName, (route) => false);
+            if (userProvider.user.type == "admin") {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => AdminScreen()));
+            } else {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, BottomBar.routeName, (route) => false);
+            }
           });
     } catch (e) {
       showSnackBar(context, e.toString());
