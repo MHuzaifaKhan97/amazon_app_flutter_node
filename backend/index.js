@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 // Constants init
 const PORT = 3000
 const app = express();
-const DB = "mongodb+srv://huzaifa:huzaifa1997@cluster0.nf0ic9r.mongodb.net/?retryWrites=true&w=majority";
+const DB = "your database url";
 
 // Import from file
 const authRouter = require('./routes/auth');

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobileapp/constants/global_variables.dart';
+import 'package:mobileapp/features/account/services/account_services.dart';
 import 'package:mobileapp/features/admin/screens/analytics_screen.dart';
 import 'package:mobileapp/features/admin/screens/orders_screen.dart';
 import 'package:mobileapp/features/admin/screens/posts_screen.dart';
@@ -15,7 +16,7 @@ class _AdminScreenState extends State<AdminScreen> {
   int _page = 0;
   double bottomNavbarWidth = 42;
   double bottombarBorderWidth = 5;
-
+  final AccountServices accountServices = AccountServices();
   List<Widget> pages = [
     const PostsScreen(),
     const AnalyticsScreen(),
@@ -31,11 +32,11 @@ class _AdminScreenState extends State<AdminScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50),
+          preferredSize: const Size.fromHeight(50),
           child: AppBar(
             flexibleSpace: Container(
-                decoration:
-                    BoxDecoration(gradient: GlobalVariables.appBarGradient)),
+                decoration: const BoxDecoration(
+                    gradient: GlobalVariables.appBarGradient)),
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -48,10 +49,38 @@ class _AdminScreenState extends State<AdminScreen> {
                     color: Colors.black,
                   ),
                 ),
-                const Text(
-                  "Admin",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.black),
+                Row(
+                  children: [
+                    const Text(
+                      "Admin",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.black),
+                    ),
+                    const SizedBox(width: 8),
+                    Container(
+                      color: Colors.black,
+                      height: 25,
+                      width: 1,
+                    ),
+                    const SizedBox(width: 8),
+                    GestureDetector(
+                      onTap: () {
+                        accountServices.logout(context);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 8),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(width: 1, color: Colors.black)),
+                        child: const Text(
+                          "Logout",
+                          style: TextStyle(color: Colors.black, fontSize: 12),
+                        ),
+                      ),
+                    )
+                  ],
                 )
               ],
             ),
