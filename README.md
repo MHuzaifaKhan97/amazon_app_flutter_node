@@ -1,1 +1,2 @@
-# Amazon Clone using Flutter & Node.
+# FullStack Amazon Clone.
+
