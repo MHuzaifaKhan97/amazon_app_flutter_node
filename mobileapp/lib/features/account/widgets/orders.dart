@@ -3,6 +3,7 @@ import 'package:mobileapp/common/widgets/loader.dart';
 import 'package:mobileapp/constants/global_variables.dart';
 import 'package:mobileapp/features/account/services/account_services.dart';
 import 'package:mobileapp/features/account/widgets/single_product.dart';
+import 'package:mobileapp/features/order_details/screens/order_details_screen.dart';
 import 'package:mobileapp/models/order.dart';
 
 class Orders extends StatefulWidget {
@@ -71,8 +72,15 @@ class _OrdersState extends State<Orders> {
                     scrollDirection: Axis.horizontal,
                     itemCount: orders!.length,
                     itemBuilder: (context, index) {
-                      return SingleProduct(
-                          image: orders![index].products[0].images[0]);
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, OrderDetailScreen.routeName,
+                              arguments: orders![index]);
+                        },
+                        child: SingleProduct(
+                            image: orders![index].products[0].images[0]),
+                      );
                     }),
               ),
             ],

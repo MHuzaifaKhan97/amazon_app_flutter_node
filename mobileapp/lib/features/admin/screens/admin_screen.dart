@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobileapp/constants/global_variables.dart';
+import 'package:mobileapp/features/admin/screens/orders_screen.dart';
 import 'package:mobileapp/features/admin/screens/posts_screen.dart';
 
 class AdminScreen extends StatefulWidget {
@@ -19,9 +20,7 @@ class _AdminScreenState extends State<AdminScreen> {
     Center(
       child: Text("Analytics Page"),
     ),
-    Center(
-      child: Text("Orders Page"),
-    ),
+    const OrdersScreen()
   ];
   void updatePage(int page) {
     setState(() {
