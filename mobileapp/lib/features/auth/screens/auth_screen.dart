@@ -102,6 +102,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       CustomTextField(
                         controller: _passwordController,
                         hintText: "Password",
+                        obscureText: true,
                       ),
                       const SizedBox(height: 10),
                       CustomButton(
@@ -148,6 +149,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       const SizedBox(height: 10),
                       CustomTextField(
                         controller: _passwordController,
+                        obscureText: true,
                         hintText: "Enter Password",
                       ),
                       const SizedBox(height: 10),
