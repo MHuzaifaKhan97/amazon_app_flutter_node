@@ -31,7 +31,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return TextFormField(
       controller: widget.controller,
       maxLines: widget.maxLines,
-      obscureText: _visibility,
+      obscureText: widget.obscureText ? _visibility : false,
       decoration: InputDecoration(
         hintText: widget.hintText,
         border: const OutlineInputBorder(
