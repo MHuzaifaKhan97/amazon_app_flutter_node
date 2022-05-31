@@ -1,5 +1,5 @@
 # FullStack Amazon Clone.
 
-## Frontend: Flutter & Provider
+## Frontend: Flutter & Provider 
 ## Backend: Node & MongoDB 
  
